@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OUR COLLECTION</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    font-family:'Prompt', sans-serif;
+    background:#d8d2c8;
+}
+
+/* HEADER */
+header{
+    padding:40px 80px;
+    text-align:center;
+    font-size:22px;
+    letter-spacing:4px;
+    font-weight:300;
+}
+
+/* GRID */
+.collection-container{
+    padding:40px 100px 100px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:40px;
+}
+
+.product-card{
+    background:#ded8ce;
+    border:1px solid #bfb8ae;
+    padding:25px;
+    text-align:center;
+    transition:0.4s;
+}
+
+.product-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 20px 40px rgba(0,0,0,0.15);
+}
+
+.product-card img{
+    width:100%;
+    height:220px;
+    object-fit:contain;
+}
+
+.price{
+    margin:10px 0;
+}
+
+button{
+    margin-top:15px;
+    padding:10px;
+    width:100%;
+    border:1px solid #222;
+    background:transparent;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#222;
+    color:white;
+}
+</style>
+</head>
+
+<body>
+
+<header>OUR COLLECTION</header>
+
+<section class="collection-container">
+
+<!-- 12 PRODUCTS -->
+
+<script>
+const products = [
+["SKIN PERFECTING PROTECTIVE BASE PREP",79,"p1.png"],
+["WHOLE PLANT EFFECT ESSENTIAL CREAM",77,"p2.png"],
+["CALMING & COMFORTING AMPOULE",50,"p3.png"],
+["HYDRATING & SOOTHING CREAM",49,"p4.png"],
+["WHOLE PLANT EFFECT CONCENTRATE",88,"p5.png"],
+["WHOLE PLANT ESSENTIAL CREAM",99,"p6.png"],
+["HYDRATING & SOOTHING MIST",32,"p7.png"],
+["CALMING & SOOTHING CREAM",36,"p8.png"],
+["HYDRATING & SOOTHING TONER",34,"p9.png"],
+["RADIANCE GLOW SERUM",65,"p10.png"],
+["PREMIUM NIGHT REPAIR SERUM",120,"p3.png"],
+["ULTRA MOISTURE DAY CREAM",95,"p4.png"]
+];
+
+products.forEach(product=>{
+    document.write(`
+    <div class="product-card">
+        <img src="pic/${product[2]}">
+        <h3>${product[0]}</h3>
+        <div class="price">$${product[1]}</div>
+        <button onclick="buyProduct('${product[0]}', ${product[1]})">
+            Add To Cart
+        </button>
+    </div>
+    `);
+});
+
+function buyProduct(name,price){
+    localStorage.setItem("productName", name);
+    localStorage.setItem("productPrice", price);
+    window.location.href="checkout.html";
+}
+</script>
+
+</section>
+
+</body>
+</html>
