@@ -3,12 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dolly Perfume</title>
+<title>Dolly Perfume - Luxury Fragrance</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-
 body {
     margin: 0;
     font-family: 'Prompt', sans-serif;
@@ -35,10 +34,12 @@ nav a {
     font-weight: 400;
     letter-spacing: 2px;
     font-size: 14px;
+    transition: 0.3s;
 }
 
 nav a:hover {
     opacity: 0.6;
+    border-bottom: 1px solid #111;
 }
 
 /* ================= HERO ================= */
@@ -140,6 +141,10 @@ nav a:hover {
     gap: 90px;
 }
 
+.collection-item {
+    overflow: hidden;
+}
+
 .collection-item img {
     width: 100%;
     height: 520px;
@@ -199,11 +204,50 @@ nav a:hover {
     cursor: pointer;
     letter-spacing: 2px;
     transition: 0.4s;
+    font-family: 'Prompt', sans-serif;
 }
 
 .bestseller-item button:hover {
     background: #111;
     color: white;
+}
+
+/* ================= REVIEWS (NEW SECTON) ================= */
+.reviews {
+    padding: 140px 120px;
+    text-align: center;
+    background: #fff;
+}
+
+.reviews h2 {
+    letter-spacing: 6px;
+    font-weight: 300;
+    margin-bottom: 70px;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.review-card {
+    padding: 40px 30px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+}
+
+.review-card p {
+    font-style: italic;
+    color: #555;
+    line-height: 1.8;
+}
+
+.review-card h4 {
+    margin-top: 20px;
+    letter-spacing: 1px;
+    color: #111;
 }
 
 /* ================= SALE ================= */
@@ -266,13 +310,14 @@ footer p, footer a {
     font-size: 14px;
     color: #ccc;
     text-decoration: none;
+    line-height: 1.8;
 }
 
 footer a:hover {
     color: white;
 }
 
-/* ================= FADE IN ================= */
+/* ================= FADE IN ANIMATION ================= */
 .fade-in {
     opacity: 0;
     transform: translateY(80px);
@@ -286,13 +331,12 @@ footer a:hover {
 
 /* ================= RESPONSIVE ================= */
 @media (max-width: 900px) {
-
     .collection-grid {
         grid-template-columns: 1fr;
     }
 
-    .bestseller-grid {
-        grid-template-columns: 1fr 1fr;
+    .bestseller-grid, .reviews-grid {
+        grid-template-columns: 1fr;
     }
 
     .sale {
@@ -307,17 +351,22 @@ footer a:hover {
 
     header {
         padding: 20px 40px;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    nav a {
+        margin: 0 15px;
     }
 
     .hero {
-        padding-left: 60px;
+        padding-left: 40px;
     }
 
     .hero h1 {
         font-size: 45px;
     }
 }
-
 </style>
 </head>
 
@@ -328,8 +377,8 @@ footer a:hover {
         <img src="pic/logo-removebg-preview.png" alt="Dolly Perfume">
     </div>
     <nav>
-        <a href="#">HOME</a>
-        <a href="#">ABOUT</a>
+        <a href="index.html">HOME</a>
+        <a href="about.html">ABOUT</a>
         <a href="regist1.html">REGISTER</a>
     </nav>
 </header>
@@ -343,25 +392,25 @@ footer a:hover {
 </section>
 
 <section class="collection fade-in">
-   <a href="OURCOLLECTION.html" class="collection-btn">
-    OUR COLLECTION
-</a>
+    <a href="OURCOLLECTION.html" class="collection-btn">
+        OUR COLLECTION
+    </a>
 
     <div class="collection-grid">
         <div class="collection-item">
-            <img src="pic/p1.png">
+            <img src="pic/p1.png" alt="Dolly Classic">
             <h3>DOLLY CLASSIC</h3>
         </div>
         <div class="collection-item">
-            <img src="pic/p2.png">
+            <img src="pic/p2.png" alt="Dolly Pink">
             <h3>DOLLY PINK</h3>
         </div>
         <div class="collection-item">
-            <img src="pic/p3.png">
+            <img src="pic/p3.png" alt="Dolly Gold">
             <h3>DOLLY GOLD</h3>
         </div>
         <div class="collection-item">
-            <img src="pic/p4.png">
+            <img src="pic/p4.png" alt="Dolly Bloom">
             <h3>DOLLY BLOOM</h3>
         </div>
     </div>
@@ -371,24 +420,42 @@ footer a:hover {
     <h2>OUR BESTSELLERS</h2>
     <div class="bestseller-grid">
         <div class="bestseller-item">
-            <img src="pic/p1.png">
+            <img src="pic/p1.png" alt="Rose Essence">
             <h3>ROSE ESSENCE</h3>
-            <button>Add to Cart</button>
+            <button onclick="addToCart('ROSE ESSENCE')">Add to Cart</button>
         </div>
         <div class="bestseller-item">
-            <img src="pic/p2.png">
+            <img src="pic/p2.png" alt="Velvet Touch">
             <h3>VELVET TOUCH</h3>
-            <button>Add to Cart</button>
+            <button onclick="addToCart('VELVET TOUCH')">Add to Cart</button>
         </div>
         <div class="bestseller-item">
-            <img src="pic/p3.png">
+            <img src="pic/p3.png" alt="Gold Elixir">
             <h3>GOLD ELIXIR</h3>
-            <button>Add to Cart</button>
+            <button onclick="addToCart('GOLD ELIXIR')">Add to Cart</button>
         </div>
         <div class="bestseller-item">
-            <img src="pic/p4.png">
+            <img src="pic/p4.png" alt="Bloom Secret">
             <h3>BLOOM SECRET</h3>
-            <button>Add to Cart</button>
+            <button onclick="addToCart('BLOOM SECRET')">Add to Cart</button>
+        </div>
+    </div>
+</section>
+
+<section class="reviews fade-in">
+    <h2>WHAT OUR CUSTOMERS SAY</h2>
+    <div class="reviews-grid">
+        <div class="review-card">
+            <p>"กลิ่น Dolly Pink หอมหวานละมุนและน่ารักมากค่ะ ฉีดไปเรียนเพื่อนทักตลอดเลยว่าตัวหอม แถมติดทนนานทั้งวันด้วย แนะนำเลยค่ะ!"</p>
+            <h4>- คุณแพรวา K.</h4>
+        </div>
+        <div class="review-card">
+            <p>"ลองสั่ง Gold Elixir มาใช้ครั้งแรก กลิ่นหอมหรูหราดูแพงมาก เหมาะกับฉีดออกงานหรือไปดินเนอร์ตอนกลางคืน แพ็กเกจจิ้งชนะเลิศ"</p>
+            <h4>- คุณธนภัทร ส.</h4>
+        </div>
+        <div class="review-card">
+            <p>"เป็นน้ำหอมที่ฉีดแล้วรู้สึกมั่นใจขึ้นมาก กลิ่น Rose Essence มีความสดชื่น ผสมผสานความเซ็กซี่เล็กๆ ขวดต่อไปมาแน่นอนครับ"</p>
+            <h4>- คุณมินตรา ป.</h4>
         </div>
     </div>
 </section>
@@ -399,7 +466,7 @@ footer a:hover {
         <p>Discover exclusive fragrances crafted for modern elegance.</p>
         <a href="regist1.html">Shop Now</a>
     </div>
-    <img src="pic/p2.png">
+    <img src="pic/p2.png" alt="Sale Item">
 </section>
 
 <footer class="fade-in">
@@ -409,9 +476,9 @@ footer a:hover {
     </div>
     <div>
         <h4>Quick Links</h4>
-        <p><a href="#">Home</a></p>
-        <p><a href="#">About</a></p>
-        <p><a href="#">Register</a></p>
+        <p><a href="index.html">Home</a></p>
+        <p><a href="about.html">About</a></p>
+        <p><a href="regist1.html">Register</a></p>
     </div>
     <div>
         <h4>Contact</h4>
@@ -421,6 +488,7 @@ footer a:hover {
 </footer>
 
 <script>
+// ระบบแอนิเมชัน Fade-in เมื่อเลื่อนหน้าจอ
 const faders = document.querySelectorAll('.fade-in');
 
 const observer = new IntersectionObserver(entries => {
@@ -429,9 +497,14 @@ const observer = new IntersectionObserver(entries => {
             entry.target.classList.add('show');
         }
     });
-}, { threshold: 0.2 });
+}, { threshold: 0.1 });
 
 faders.forEach(el => observer.observe(el));
+
+// ระบบแจ้งเตือนเพิ่มสินค้าลงตะกร้าจำลอง (JavaScript Function)
+function addToCart(productName) {
+    alert('🛒 เพิ่มน้ำหอมกลิ่น "' + productName + '" ลงในตะกร้าสินค้าของคุณเรียบร้อยแล้ว!');
+}
 </script>
 
 </body>
